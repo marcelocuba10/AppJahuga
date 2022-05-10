@@ -1,0 +1,27 @@
+<ion-tabs>
+
+  <ion-tab-bar style="padding: 10px 0px;" slot="bottom">
+
+    <ion-tab-button class="st-tab" tab="home">
+      <ion-icon name="grid-outline"></ion-icon>
+      <ion-label>home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="st-tab" tab="new-order">
+      <ion-icon name="reader-outline"></ion-icon>
+      <ion-label>New Order</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="st-tab" *ngIf="userRole == 'customer'">
+      <ion-icon name="bar-chart-outline"></ion-icon>
+      <ion-label>Reports</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="st-tab" *ngIf="userRole == 'worker'" tab="materials">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Materials</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

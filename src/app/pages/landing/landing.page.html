@@ -1,0 +1,45 @@
+<ion-content class="background">
+  <ion-img style="width: 80%;margin:auto;" src="./assets/initial_logo.png"></ion-img>
+  <ion-text color="secondary">
+    <h1 style="width:70 %;color: #fff;text-align: center;font-weight: 900;margin: auto;">
+      Enterprise Team Colaboration
+    </h1>
+    <p
+      style="
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        margin-top:20px;
+        margin-top: 30 px;
+        line-height: 1em;">
+      We currently have over 20 live roles waiting for you!
+    </p>
+  </ion-text>
+  <ion-grid style="margin-top: 40px;width: 70%;">
+    <ion-row>
+      <ion-col>
+        <ion-button style="box-shadow: 3px 6px 7px 0px #0000005e;border-radius: 30px;"
+          (click)="register()"
+          mode="ios"
+          size="large"
+          shape="round"
+          expand="block"
+          color="dark">Register</ion-button>
+      </ion-col>
+    </ion-row>
+    <p class="ion-text-center" style="color: #fff">Already have an account?</p>
+    <ion-row>
+      <ion-col>
+        <ion-button style="box-shadow: 3px 6px 7px 0px #0000005e;border-radius: 30px;"
+          (click)="login()"
+          mode="ios"
+          size="large"
+          shape="round"
+          expand="block"
+          color="dark">Login</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

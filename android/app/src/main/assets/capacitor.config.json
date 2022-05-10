@@ -1,0 +1,6 @@
+{
+	"appId": "app.orderservice.hakecode",
+	"appName": "OrderService",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
