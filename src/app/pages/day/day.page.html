@@ -22,42 +22,21 @@
       </ion-grid> 
 
       <ion-list>
-        <ion-card class="card-color-day" (click)="addBooking('Lunes')">
+        <ion-card class="card-color-day" *ngFor="let selected of days_selected" (click)="addBooking(day)">
           <ion-card-header>
-            <ion-card-title>Lunes</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card class="card-color-day" (click)="addBooking('Martes')">
-          <ion-card-header>
-            <ion-card-title>Martes</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card class="card-color-day" (click)="addBooking('Miercoles')">
-          <ion-card-header>
-            <ion-card-title>Miercoles</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card class="card-color-day" (click)="addBooking('Jueves')">
-          <ion-card-header>
-            <ion-card-title>Jueves</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card class="card-color-day" (click)="addBooking('Viernes')">
-          <ion-card-header>
-            <ion-card-title>Viernes</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card class="card-color-day" (click)="addBooking('Sábado')">
-          <ion-card-header>
-            <ion-card-title>Sábado</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card class="card-color-day" (click)="addBooking('Domingo')">
-          <ion-card-header>
-            <ion-card-title>Domingo</ion-card-title>
+            <ion-card-title>{{ selected }}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-list>
+
+      <ion-list>
+        <ion-card class="card-color-day" *ngFor="let day of days_show" disabled="true" (click)="addBooking(day)">
+          <ion-card-header>
+            <ion-card-title>{{ day }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-list>
+
       <ion-fab [routerLink]="['../home']" vertical="bottom" horizontal="center" slot="fixed">
         <ion-fab-button color="dark">
           <ion-icon name="arrow-back-outline"></ion-icon>

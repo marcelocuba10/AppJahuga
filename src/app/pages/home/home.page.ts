@@ -19,18 +19,19 @@ export class HomePage {
   //grounds$: Observable<Ground[]>;
 
   constructor(
-
     private router: Router,
     public apiService: ApiService,
   ) { }
 
   ionViewWillEnter() {
+    //get grounds from api
     this.apiService.getGrounds().subscribe(response => {
       this.grounds = response;
       console.log(this.grounds);
     });
   }
 
+  //send data for next page, in this case page day
   addBooking(ground: Ground) {
     this.booking.id = Date.now();
     this.booking.groundId = ground.id;
