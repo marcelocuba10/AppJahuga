@@ -21,39 +21,55 @@ export class SchedulePage implements OnInit {
   reserved = [];
   notReserved = [];
   daySelected = [];
+
+  ground: any = [];
+  schedules_selected = [];
   private schedulesSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private apiService: ApiService
+    public apiService: ApiService,
+    private appService: AppService,
   ) {
 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.booking = this.router.getCurrentNavigation().extras.state.booking;
-        console.log("constructor inicia 2do");
         console.log(this.booking);
       }
     });
 
+    console.log("run constructor");
+    this.getSchedules();
   }
 
   //filter the day by selected in this page
   ngOnInit() {
+    console.log("run ngOnInit");
+  }
 
+  public getSchedules() {
+
+    this.appService.presentLoading(1);
+    this.apiService.getGroundById(this.booking.groundId).subscribe(response => {
+      this.ground = response;
+      this.appService.presentLoading(0);
+      this.schedules_selected = this.ground.schedule;
+    });
   }
 
   ionViewWillEnter() {
 
-    console.log("primero ionViewWillEnter");
+    console.log("run ionViewWillEnter");
+    this.getSchedules();
 
     //get schedules
-    this.apiService.getSchedules().subscribe(res => {
-      this.schedules = res;
-      console.log("muestra todos los horarios")
-      console.log(this.schedules);
-    });
+    // this.apiService.getSchedules().subscribe(res => {
+    //   this.schedules = res;
+    //   console.log("muestra todos los horarios")
+    //   console.log(this.schedules);
+    // });
 
     //get all bookings
     this.apiService.getBookings().subscribe(res => {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Booking } from 'src/app/models/booking';
 import { ApiService } from 'src/app/services/api.service';
+import { AppService } from 'src/app/services/app.service';
+
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-day',
@@ -12,17 +15,17 @@ export class DayPage implements OnInit {
 
   booking = {} as Booking;
   bookings = [];
-  ground: any;
-  days = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-  //days_selected = [];
-  days_selected: [number, string];
-  days_show:any =  [];
+  ground: any = [];
+  //days = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+  days_selected = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public apiService: ApiService,
+    private appService: AppService,
   ) {
+
     //we receive the data that comes from page home
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -32,64 +35,33 @@ export class DayPage implements OnInit {
     });
 
     console.log("Loading constructor");
-    this.compareDays();
-
-
-    this.days_show = this.days.filter(item => this.days_selected.indexOf(item) < 0);
-    console.log(this.days_show);
+    this.getDays();
   }
 
-  async compareDays() {
+  public getDays() {
 
+    this.appService.presentLoading(1);
     this.apiService.getGroundById(this.booking.groundId).subscribe(response => {
       this.ground = response;
+      this.appService.presentLoading(0);
       this.days_selected = this.ground.day;
-      
-      return this.days_selected;
     });
   }
 
   ionViewWillEnter() {
+
     console.log("Loading ionViewWillEnter");
-
-    this.compareDays();
-
-  }
-
-  public daysColors() {
-
-    //let a1 = ['Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-
-    // var array1 = ["Panda", "Zebra", "Lion", "Cat", "Dog", "Fish", "whatever", "Bird"];
-    // var array2 = ["Panda", "Cat"];
-
-    // function checkAvailability(arr, val) {
-    //   return arr.some(function (arrVal) {
-    //     return val !== arrVal;
-    //   });
-    // }
-
-    // for (let entry of array1) {
-    //   if (checkAvailability(array2, entry)) {
-    //     console.log(entry);
-    //     //break, we have the first match which is all we need. Include this news article result or whatever logic needs to happen
-    //   }
-    // }
-
+    this.getDays();
 
     // let missing = this.days.filter(item => a1.indexOf(item) < 0);
     // console.log(missing);
 
-    let missing2 = this.days.filter(item => this.days_selected.indexOf(item) < 0);
-    console.log(missing2);
-
-
+    // let missing2 = this.days.filter(item => this.days_selected.indexOf(item) < 0);
+    // console.log(missing2);
   }
 
-  //filter the day by selected in this page
   ngOnInit() {
-
-
+    console.log("Loading ngOnInit");
   }
 
   addBooking(day: string) {
@@ -103,7 +75,6 @@ export class DayPage implements OnInit {
       }
     };
     this.router.navigate(['schedule'], navigationExtras);
-
   }
 
 }

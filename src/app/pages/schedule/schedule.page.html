@@ -21,10 +21,18 @@
           </ion-row>
       </ion-grid> 
 
-      <ion-list>
-        <ion-card *ngFor="let schedule of schedules" class="card-color-available" [disabled]="!schedule.status" (click)="addBooking(schedule.name)">
+      <!-- <ion-list>
+        <ion-card *ngFor="let schedule of schedules_selected" class="card-color-available" [disabled]="!schedule.status" (click)="addBooking(schedule.name)">
           <ion-card-header>
             <ion-card-title style="font-size:18px" >{{ schedule.status ? 'Disponible: ' : 'Reservado: ' }}{{ schedule.name }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-list> -->
+
+      <ion-list>
+        <ion-card *ngFor="let schedule of schedules_selected" class="card-color-available" (click)="addBooking(schedule.name)">
+          <ion-card-header>
+            <ion-card-title style="font-size:18px" >{{ schedule }}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-list>
