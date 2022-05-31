@@ -2,24 +2,24 @@
 
   <ion-tab-bar style="padding: 10px 0px;" slot="bottom">
 
-    <ion-tab-button class="st-tab" tab="home">
+    <ion-tab-button class="st-tab" tab="main">
       <ion-icon name="grid-outline"></ion-icon>
-      <ion-label>home</ion-label>
+      <ion-label>Inicio</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button class="st-tab" tab="new-order">
+    <ion-tab-button class="st-tab" tab="dashboard">
       <ion-icon name="reader-outline"></ion-icon>
-      <ion-label>New Order</ion-label>
+      <ion-label>Mis Reservas</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button class="st-tab" *ngIf="userRole == 'customer'">
-      <ion-icon name="bar-chart-outline"></ion-icon>
-      <ion-label>Reports</ion-label>
+    <ion-tab-button class="st-tab">
+      <ion-icon name="globe-outline"></ion-icon>
+      <ion-label>Mapa</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button class="st-tab" *ngIf="userRole == 'worker'" tab="materials">
+    <ion-tab-button class="st-tab" tab="profile">
       <ion-icon name="wallet-outline"></ion-icon>
-      <ion-label>Materials</ion-label>
+      <ion-label>Perfil</ion-label>
     </ion-tab-button>
 
   </ion-tab-bar>

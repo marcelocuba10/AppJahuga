@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { AppService } from 'src/app/services/app.service';
@@ -20,6 +20,7 @@ export class ProfilePage implements OnInit {
     private authService: AuthService,
     private appService: AppService,
     public formBuilder: FormBuilder,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -45,6 +46,10 @@ export class ProfilePage implements OnInit {
       }
     );
 
+  }
+
+  goBack(){
+    this.navCtrl.back();
   }
 
 }

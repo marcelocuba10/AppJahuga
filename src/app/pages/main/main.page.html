@@ -1,0 +1,93 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button class="icon-menu"></ion-menu-button>
+  </ion-buttons>
+  <ion-title class="ion-text-center"></ion-title>
+  <ion-buttons slot="primary">
+    <ion-button>
+      <ion-icon
+        style="font-size: 25px"
+        slot="end"
+        name="person-outline"
+      ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+
+<ion-content>
+  <ion-grid style="border-radius: 20px">
+    <ion-row>
+      <ion-col>
+        <ion-text color="secondary">
+          <h1 style="margin-left: 20px;font-family: cursive;color: #000;font-weight: 800;">
+            Jahuga App
+          </h1>
+        </ion-text>
+      </ion-col>
+      <ion-col>
+        <img style="width: 20%;margin-top: 18px;margin-left: -5px;"
+          src="https://i.ibb.co/ZcC8p0s/descarga.png"/>
+      </ion-col>
+    </ion-row>
+    <ion-searchbar placeholder="¿Que vas a jugar?"></ion-searchbar>
+  </ion-grid>
+
+  <ion-text color="primary">
+    <h6 style="margin-left: 20px;font-family: cursive;color: #000;font-weight: 800;">Categorías</h6>
+  </ion-text>
+
+  <ion-grid style="border-radius: 20px">
+    <ion-row>
+      <ion-col>
+        <img class="card-cat" src="https://i.ibb.co/LhVK6xM/padel2.jpg" />
+      </ion-col>
+      <ion-col>
+        <img class="card-cat" src="https://i.ibb.co/xjqzwKN/futbol.jpg" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-text color="primary">
+    <h6 style="margin-left: 20px;font-family: cursive;color: #000;font-weight: 800;">Locales</h6>
+  </ion-text>
+
+  <ion-list>
+    <ion-card class="card-sty">
+      <img style="height: 100%; width: 100%" src="https://i.ibb.co/tbR1rLH/Captura-de-pantalla-360.png"/>
+      <ion-card-header style="position: relative; margin-top: -99px" [routerLink]="['../home']">
+        <ion-grid style="border-radius: 20px">
+          <ion-row>
+            <ion-col>
+              <ion-card-title style="color: #fff; font-weight: bold; font-size: 25px">Big Padel</ion-card-title>
+              <ion-card-subtitle style="color: #fff; font-weight: bold;">Av mensu 2213 km 4</ion-card-subtitle>
+            </ion-col>
+            <ion-col>
+              <ion-badge
+                style="float: right; font-size: 16px; padding: 8px"
+                color="warning">85.00 GS</ion-badge>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+    </ion-card>
+    <ion-card class="card-sty">
+      <img style="height: 100%; width: 100%" src="https://365opensports.com/wp-content/uploads/2021/09/padelbana-1.jpg"/>
+      <ion-card-header style="position: relative; margin-top: -99px">
+        <ion-grid style="border-radius: 20px">
+          <ion-row>
+            <ion-col>
+              <ion-card-title style="color: #fff; font-weight: bold; font-size: 25px">Diver Padel</ion-card-title>
+              <ion-card-subtitle style="color: #fff; font-weight: bold;">Av mensu 2213 km 4</ion-card-subtitle>
+            </ion-col>
+            <ion-col>
+              <ion-badge
+                style="float: right; font-size: 16px; padding: 8px"
+                color="warning">85.00 GS</ion-badge>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+    </ion-card>
+  </ion-list>
+</ion-content>

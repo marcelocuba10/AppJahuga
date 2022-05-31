@@ -9,6 +9,11 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'main',
+        loadChildren: () => import('../pages/main/main.module').then(m => m.MainPageModule),
+        canActivate:[AuthGuard]
+      },
+      {
         path: 'home',
         loadChildren: () => import('../pages/home/home.module').then(m => m.HomePageModule),
         canActivate:[AuthGuard]
@@ -55,11 +60,18 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/main',
         pathMatch: 'full'
       }
     ]
   },
+  //Force show tab bottom when url not contain /tabs/
+  {
+    path: 'main',
+    redirectTo: '/tabs/main',
+    pathMatch: 'full'
+  },
+  //on init app, show login page
   {
     path: '',
     redirectTo: '/landing',

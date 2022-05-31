@@ -13,8 +13,8 @@ import { Booking } from '../models/booking';
 })
 export class ApiService {
 
-  //API_URL = 'https://orderservice.badrobotspy.com/api/';
-  API_URL = 'http://127.0.0.1:8000/api/';
+  API_URL = 'https://jahuga.badrobotspy.com/api/';
+  //API_URL = 'http://127.0.0.1:8000/api/';
 
   httpHeader = {
     headers: new HttpHeaders({
@@ -42,7 +42,7 @@ export class ApiService {
 
   /*** grounds ***/
   public getGrounds(): Observable<Ground[]> {
-    return this.http.get<Ground[]>(this.API_URL + 'grounds/', this.httpHeader);
+    return this.http.get<Ground[]>(this.API_URL + 'grounds', this.httpHeader);
   }
 
   public getGroundById(id): Observable<Ground> {
@@ -50,7 +50,7 @@ export class ApiService {
   }
 
   public addGround(ground: Ground): Observable<Ground> {
-    return this.http.post<Ground>(this.API_URL + 'grounds/', ground, this.httpHeader);
+    return this.http.post<Ground>(this.API_URL + 'grounds', ground, this.httpHeader);
   }
 
   public updateGround(groundId: number, ground: Ground): Observable<Ground> {
@@ -63,16 +63,16 @@ export class ApiService {
 
   /*** get Schedules ***/
   public getSchedules(): Observable<Schedule[]> {
-    return this.http.get<Schedule[]>(this.API_URL + 'schedules/', this.httpHeader);
+    return this.http.get<Schedule[]>(this.API_URL + 'schedules', this.httpHeader);
   }
 
   /*** get Schedules ***/
   public getBookings(): Observable<Booking[]> {
-    return this.http.get<Booking[]>(this.API_URL + 'bookings/', this.httpHeader);
+    return this.http.get<Booking[]>(this.API_URL + 'bookings', this.httpHeader);
   }
 
   public addBooking(ground: Booking): Observable<Booking> {
-    return this.http.post<Booking>(this.API_URL + 'bookings/', ground, this.httpHeader);
+    return this.http.post<Booking>(this.API_URL + 'bookings', ground, this.httpHeader);
   }
 
   /*** get User ***/

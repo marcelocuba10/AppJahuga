@@ -49,7 +49,7 @@ export class RegisterPage implements OnInit {
           () => {
             this.dismissRegister();
             this.appService.presentLoading(0);
-            this.navCtrl.navigateRoot('tabs/orders');
+            this.navCtrl.navigateRoot('tabs/main');
           }
         );
         this.appService.presentToast('registro con sucesso');
