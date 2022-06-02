@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { User } from './models/user';
 import { AppService } from './services/app.service';
 import { AuthService } from './services/auth.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -25,24 +23,9 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    console.log('run first');
-    //get User
-    this.authService.getUser().subscribe(
-      user => {
-        this.user = user;
-        console.log(user);
-      }
-    );
   }
 
   ionViewWillEnter() {
-    console.log('run second')
-    this.authService.getUser().subscribe(
-      user => {
-        this.user = user;
-        console.log(user)
-      }
-    );
   }
 
   initializeApp() {

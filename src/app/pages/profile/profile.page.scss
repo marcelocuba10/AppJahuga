@@ -7,27 +7,27 @@
 
 .head-title-center{
     text-align: center;
-    color: #000;
+    color: #fff;
     font-weight: 700;
 }
 
 .head-subtitle-center{
     text-align: center;
-    color: #404040;
+    color: #fff;
     margin-top: -10px;
 }
 
 .bg-card{
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    background-color: #ffc107;
+    background: linear-gradient(180deg, #2dd36f, #32b968, #2da55d);
     padding: 85px 0px 40px 0px;
 }
 
 .text-subtitle{
     text-align: center;
     font-size: 14px;
-    color:#1b1919;
+    color:#fff;
 }
 
 ion-content{

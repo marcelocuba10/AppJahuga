@@ -5,12 +5,10 @@
       
         <div class="menu-header-bg">
           <div class="header-content">
-            <img src="https://i.ibb.co/HYD7CHq/w2kf-R-removebg-preview.png">
+            <img src="./assets/jahuga_logo_white.png">
             <ion-label>
-              <h2 *ngIf="user">{{ user["first_name"]  }} {{ user["last_name"]  }}</h2>
-              <h2 *ngIf="!user">User loading</h2>
-              <p class="head-subtitle-center" *ngIf="user == undefined">email@email.com</p>
-              <p class="head-subtitle-center" *ngIf="user != undefined">{{ user["email"] }}</p>
+              <h2>Jahuga App</h2>
+              <p class="head-subtitle-center">Reserva de canchas</p>
             </ion-label>
           </div>
         </div>
@@ -23,22 +21,27 @@
           </ion-menu-toggle>
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerLink]="['/tabs/profile']">
-              <ion-icon name="person-outline"></ion-icon><ion-label>Mis Reservas</ion-label>
+              <ion-icon name="calendar-outline"></ion-icon><ion-label>Mis Reservas</ion-label>
             </ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerLink]="['/tabs/orders']">
-              <ion-icon name="reader-outline"></ion-icon><ion-label>Mapa</ion-label>
+              <ion-icon name="globe-outline"></ion-icon><ion-label>Mapa</ion-label>
             </ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerLink]="['/tabs/materials']">
-              <ion-icon name="wallet-outline"></ion-icon><ion-label>Canchas</ion-label>
+              <ion-icon name="tablet-landscape-outline"></ion-icon><ion-label>Canchas</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerLink]="['/tabs/profile']">
+              <ion-icon name="person-circle-outline"></ion-icon><ion-label>Mi Cuenta</ion-label>
             </ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle auto-hide="false">
             <ion-item (click)="logout()">
-              <ion-icon name="log-out-outline"></ion-icon><ion-label>Logout</ion-label>
+              <ion-icon name="log-out-outline"></ion-icon><ion-label>Cerrar Sesión</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
