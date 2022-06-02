@@ -48,7 +48,9 @@ export class LoginPage implements OnInit {
         console.log("Logged In, Welcome!");
       },
       error => {
+        this.appService.presentLoading(0);
         console.log(error);
+        this.appService.presentAlert("Oops! usuario no encontrado, verifique los datos");
       },
       () => {
         this.dismissLogin();

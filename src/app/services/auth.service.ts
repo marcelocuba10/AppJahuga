@@ -45,16 +45,13 @@ export class AuthService {
     );
   }
 
-  register(fName: string, lName: string, phone: string, address: string, email: string, password: string) {
-    const status = 1;
-    const role = "customer";
-    return this.http.post(this.env.API_URL + 'auth/register', { fName, lName, address, phone, email, password, status, role }
-    );
+  register(first_name: string, phone: string, email: string, password: string) {
+    //const role = "customer";
+    return this.http.post(this.env.API_URL + 'auth/register', { first_name, phone, email, password });
   }
 
-  updateUserProfile(fName: string, lName: string, phone: string, address: string, email: string, password: string) {
-    return this.http.post(this.env.API_URL + 'auth/update', { fName, lName, address, phone, email, password }
-    );
+  updateUserProfile(first_name: string, last_name: string, phone: string, address: string, email: string, password: string) {
+    return this.http.post(this.env.API_URL + 'auth/update', { first_name, last_name, address, phone, email, password });
   }
 
   logout() {

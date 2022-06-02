@@ -7,5 +7,5 @@ export interface User {
     address: string;
     role: string;
     status: number;
-    password:string;
+    password: string;
 }

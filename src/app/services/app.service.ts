@@ -27,7 +27,7 @@ export class AppService {
   async presentAlert(message: string) {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: 'Atencion',
+      header: 'Atención',
       message,
       buttons: ['OK']
     });
@@ -46,11 +46,10 @@ export class AppService {
 
   async presentLoading(status) {
     //status if present 1 or dismiss 0
-
     if (status == 1) {
-      this.loading = await this.loadingCtrl.create({ 
+      this.loading = await this.loadingCtrl.create({
         message: 'Espere..',
-        backdropDismiss: true, 
+        backdropDismiss: true,
         translucent: true,
         duration: 2000,
       });
@@ -87,35 +86,6 @@ export class AppService {
       }
       if (!model.mecanica) {
         this.presentAlert('Selecione a mecanica responsavel pela manutenção realizada');
-        return false;
-      }
-    }
-
-    if (page == 'expense') {
-      if (!model.nome) {
-        this.presentAlert('Insira o nome');
-        return false;
-      }
-      if (!model.id_veiculo) {
-        this.presentAlert('Selecione um veiculo');
-        return false;
-      }
-    }
-
-    if (page == 'car') {
-      if (!model.nome) {
-        this.presentAlert('Ingrese o nome');
-        this.loading.dismiss();
-        return false;
-      }
-      if (!model.modelo) {
-        this.presentAlert('Ingrese o modelo');
-        this.loading.dismiss();
-        return false;
-      }
-      if (!model.km) {
-        this.presentAlert('Ingrese o quilometragem atual');
-        this.loading.dismiss();
         return false;
       }
     }

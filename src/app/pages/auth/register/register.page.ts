@@ -39,13 +39,15 @@ export class RegisterPage implements OnInit {
   //register
   async register(form: NgForm) {
     this.appService.presentLoading(1);
-    await this.authService.register(form.value.fName, form.value.lName, form.value.address, form.value.phone, form.value.email, form.value.password).subscribe(
+    await this.authService.register(form.value.first_name, form.value.phone, form.value.email, form.value.password).subscribe(
       data => {
         this.authService.login(form.value.email, form.value.password).subscribe(
           () => {
           },
           error => {
+            this.appService.presentLoading(0);
             console.log(error);
+            this.appService.presentAlert("Oops! error al registrarse");
           },
           () => {
             this.dismissRegister();
@@ -53,10 +55,13 @@ export class RegisterPage implements OnInit {
             this.navCtrl.navigateRoot('tabs/main');
           }
         );
-        this.appService.presentToast('registro con sucesso');
+        //this.appService.presentToast('registro con sucesso');
+        console.log('Registered account');
       },
       error => {
+        this.appService.presentLoading(0);
         console.log(error);
+        this.appService.presentAlert("Oops! verifique los datos ingresados");
       },
       () => {
 
