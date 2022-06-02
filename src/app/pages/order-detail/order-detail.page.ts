@@ -1,4 +1,4 @@
-import { Users } from './../../models/users';
+import { User } from '../../models/user';
 import { AppService } from './../../services/app.service';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,7 @@ export class OrderDetailPage implements OnInit {
 
   private id: any;
   private order= {} as Orders;
-  private user = {} as Users;
+  private user = {} as User;
   private category = {} as Categories;
 
   constructor(

@@ -37,7 +37,7 @@ export class MaterialsPage implements OnInit {
     //this.getCategories();
 
     //get User
-    this.authService.user().subscribe(
+    this.authService.getUser().subscribe(
       user => {
         this.user = user;
         console.log(user);

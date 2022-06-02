@@ -1,8 +1,8 @@
 {
-  "name": "OrderService",
+  "name": "Jahuga",
   "version": "0.0.1",
-  "author": "Hakecode",
-  "homepage": "https://hakecode.com/",
+  "author": "Jahuga",
+  "homepage": "https://jahuga.com.py/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

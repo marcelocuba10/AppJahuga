@@ -32,7 +32,7 @@ export class DetailMaterialComponent implements OnInit {
     //run in the first moment
 
     //get User
-    this.authService.user().subscribe(
+    this.authService.getUser().subscribe(
       user => {
         this.user = user;
         console.log(user);

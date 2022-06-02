@@ -25,10 +25,9 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    console.log('run in the first moment');
-
+    console.log('run first');
     //get User
-    this.authService.user().subscribe(
+    this.authService.getUser().subscribe(
       user => {
         this.user = user;
         console.log(user);
@@ -38,7 +37,7 @@ export class AppComponent {
 
   ionViewWillEnter() {
     console.log('run second')
-    this.authService.user().subscribe(
+    this.authService.getUser().subscribe(
       user => {
         this.user = user;
         console.log(user)
@@ -56,11 +55,11 @@ export class AppComponent {
 
   // When Logout Button is pressed
   async logout() {
-    
     this.appService.presentLoading(1);
     await this.authService.logout().subscribe(
       data => {
-        this.appService.presentToast('logout');
+        //this.appService.presentToast('logout');
+        console.log('Loggout');
       },
       error => {
         console.log(error);

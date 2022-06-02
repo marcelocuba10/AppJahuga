@@ -41,7 +41,7 @@ export class OrdersPage {
     //this.getUsers();
 
     //get User
-    this.authService.user().subscribe(
+    this.authService.getUser().subscribe(
       user => {
         this.user = user;
         console.log(user);

@@ -25,12 +25,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  // Dismiss Login Modal
+  //Dismiss Login Modal
   dismissLogin() {
     this.modalController.dismiss();
   }
 
-  // On Register button tap, dismiss login modal and open register modal
+  //Call Register modal
   async registerModal() {
     this.dismissLogin();
     const registerModal = await this.modalController.create({
@@ -38,13 +38,14 @@ export class LoginPage implements OnInit {
     });
     return await registerModal.present();
   }
-  
-  async login(form: NgForm) {
 
+  //login 
+  async login(form: NgForm) {
     this.appService.presentLoading(1);
     await this.authService.login(form.value.email, form.value.password).subscribe(
       data => {
-        this.appService.presentToast('Logged In');
+        //this.appService.presentToast('Logged In');
+        console.log("Logged In, Welcome!");
       },
       error => {
         console.log(error);

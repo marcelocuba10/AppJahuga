@@ -20,6 +20,14 @@ export class AuthService {
     private env: ApiService,
   ) { }
 
+  getUser() {
+    const headers = new HttpHeaders({ 'Authorization': this.token["token_type"] + " " + this.token["access_token"] });
+    return this.http.get<User>(this.env.API_URL + 'auth/user', { headers: headers })
+      .pipe(
+        tap(user => user)
+      );
+  }
+
   login(email: string, password: string) {
     return this.http.post(this.env.API_URL + 'auth/login', { email, password }
     ).pipe(tap(token => {
@@ -59,14 +67,6 @@ export class AuthService {
           delete this.token;
           return data;
         })
-      );
-  }
-
-  user() {
-    const headers = new HttpHeaders({ 'Authorization': this.token["token_type"] + " " + this.token["access_token"] });
-    return this.http.get<User>(this.env.API_URL + 'auth/user', { headers: headers })
-      .pipe(
-        tap(user => user)
       );
   }
 

@@ -27,7 +27,7 @@ export class RegisterPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  // On Login button tap, dismiss Register modal and open login Modal
+  // call login modal
   async loginModal() {
     this.dismissRegister();
     const loginModal = await this.modalController.create({
@@ -36,6 +36,7 @@ export class RegisterPage implements OnInit {
     return await loginModal.present();
   }
 
+  //register
   async register(form: NgForm) {
     this.appService.presentLoading(1);
     await this.authService.register(form.value.fName, form.value.lName, form.value.address, form.value.phone, form.value.email, form.value.password).subscribe(

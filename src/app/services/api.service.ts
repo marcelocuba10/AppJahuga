@@ -3,10 +3,10 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
-import { Users } from '../models/users';
 import { Ground } from '../models/ground';
 import { Schedule } from '../models/schedule';
 import { Booking } from '../models/booking';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -76,15 +76,15 @@ export class ApiService {
   }
 
   /*** get User ***/
-  public getUsers(): Observable<Users> {
-    return this.http.get<Users>(this.API_URL + 'users/', this.httpHeader).pipe(
+  public getUsers(): Observable<User> {
+    return this.http.get<User>(this.API_URL + 'users/', this.httpHeader).pipe(
       retry(2),
       catchError(this.handleError)
     );
   }
 
-  public getUserById(id): Observable<Users> {
-    return this.http.get<Users>(this.API_URL + 'users/' + id, this.httpHeader).pipe(
+  public getUserById(id): Observable<User> {
+    return this.http.get<User>(this.API_URL + 'users/' + id, this.httpHeader).pipe(
       retry(2),
       catchError(this.handleError)
     );

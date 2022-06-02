@@ -1,44 +1,26 @@
 <ion-content class="background">
-  <ion-img style="width: 80%;margin:auto;" src="./assets/initial_logo.png"></ion-img>
+  <div id="ball">
+  </div>
+  <ion-img style="width: 50%;margin:auto;margin-top: 10vh;" src="./assets/jahuga_logo_white.png"></ion-img>
   <ion-text color="secondary">
-    <h1 style="width:70 %;color: #fff;text-align: center;font-weight: 900;margin: auto;">
-      Enterprise Team Colaboration
+    <h1 style="width:70%;color: #fff;text-align: center;font-weight: 900;margin: auto;">
+      Reservar una cancha nunca fue tan fácil!
     </h1>
-    <p
-      style="
-        color: #fff;
-        font-size: 20px;
-        text-align: center;
-        width: 60%;
-        margin: auto;
-        margin-top:20px;
-        margin-top: 30 px;
-        line-height: 1em;">
-      We currently have over 20 live roles waiting for you!
+    <p style="color: #fff;font-size: 20px;text-align: center;width: 60%;margin: auto;margin-top:20px;margin-top: 30 px;line-height: 1em">
+      en tan sólo 5 clicks!
     </p>
   </ion-text>
   <ion-grid style="margin-top: 40px;width: 70%;">
     <ion-row>
       <ion-col>
-        <ion-button style="box-shadow: 3px 6px 7px 0px #0000005e;border-radius: 30px;"
-          (click)="register()"
-          mode="ios"
-          size="large"
-          shape="round"
-          expand="block"
-          color="dark">Register</ion-button>
+        <ion-button style="box-shadow: 3px 6px 7px 0px #5c4f26;border-radius: 30px;"
+          (click)="register()" mode="ios" size="large" shape="round" expand="block" color="warning">Registrarse</ion-button>
       </ion-col>
     </ion-row>
-    <p class="ion-text-center" style="color: #fff">Already have an account?</p>
+    <p class="ion-text-center" style="color: #fff">Ya tenés una cuenta?</p>
     <ion-row>
       <ion-col>
-        <ion-button style="box-shadow: 3px 6px 7px 0px #0000005e;border-radius: 30px;"
-          (click)="login()"
-          mode="ios"
-          size="large"
-          shape="round"
-          expand="block"
-          color="dark">Login</ion-button>
+        <ion-button style="box-shadow: 3px 6px 7px 0px #0b111c5e;border-radius: 30px;" (click)="login()" mode="ios" size="large" shape="round" expand="block" color="secondary">Iniciar Sesión</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
