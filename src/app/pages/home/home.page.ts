@@ -5,6 +5,7 @@ import { Router, NavigationExtras } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { ApiService } from './../../services/api.service';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-home',
@@ -21,13 +22,31 @@ export class HomePage {
   constructor(
     private router: Router,
     public apiService: ApiService,
-  ) { }
+    public appService: AppService
+  ) {
+    console.log('Load constructor');
+  }
 
-  ionViewWillEnter() {
+  ngOnInit() {
+    console.log("Load ngOnInit");
+  }
+
+  async ionViewWillEnter() {
+    console.log('Load ionViewWillEnter');
     //get grounds from api
+    this.appService.presentLoading(1);
     this.apiService.getGrounds().subscribe(response => {
       this.grounds = response;
-      console.log(this.grounds);
+
+      //check if found grounds
+      if (Array.isArray(this.grounds)) {
+        this.appService.presentLoading(0);
+        console.log(this.grounds);
+      } else {
+        this.appService.presentLoading(0);
+        this.appService.presentAlert('Sin canchas disponibles por el momento');
+        console.log("No results");
+      }
     });
   }
 

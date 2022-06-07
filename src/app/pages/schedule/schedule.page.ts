@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Booking } from 'src/app/models/booking';
-import { Schedule } from 'src/app/models/schedule';
 import { Subscription } from 'rxjs';
 import { AppService } from 'src/app/services/app.service';
 import { ApiService } from 'src/app/services/api.service';
-
 
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.page.html',
   styleUrls: ['./schedule.page.scss'],
 })
+
 export class SchedulePage implements OnInit {
 
   booking = {} as Booking;
@@ -39,30 +38,33 @@ export class SchedulePage implements OnInit {
         console.log(this.booking);
       }
     });
-
-    console.log("run constructor");
-    this.getSchedules();
+    console.log("Load constructor");
   }
 
-  //filter the day by selected in this page
   ngOnInit() {
-    console.log("run ngOnInit");
-  }
-
-  public getSchedules() {
-
-    this.appService.presentLoading(1);
-    this.apiService.getGroundById(this.booking.groundId).subscribe(response => {
-      this.ground = response;
-      this.appService.presentLoading(0);
-      this.schedules_selected = this.ground.schedule;
-    });
+    console.log("Load ngOnInit");
   }
 
   ionViewWillEnter() {
 
-    console.log("run ionViewWillEnter");
-    this.getSchedules();
+    console.log("Load ionViewWillEnter");
+    
+    this.appService.presentLoading(1);
+    this.apiService.getGroundById(this.booking.groundId).subscribe(response => {
+      this.ground = response;
+      console.log(this.ground);
+      this.schedules_selected = this.ground.schedule;
+
+      //check if found schedules
+      if (Array.isArray(this.ground) || this.ground != null) {
+        this.appService.presentLoading(0);
+        console.log(this.ground);
+      } else {
+        this.appService.presentLoading(0);
+        this.appService.presentAlert('Sin horarios disponibles por el momento');
+        console.log("No schedules results");
+      }
+    });
 
     //get schedules
     // this.apiService.getSchedules().subscribe(res => {

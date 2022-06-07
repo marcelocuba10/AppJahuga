@@ -25,7 +25,6 @@ export class DayPage implements OnInit {
     public apiService: ApiService,
     private appService: AppService,
   ) {
-
     //we receive the data that comes from page home
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -33,25 +32,28 @@ export class DayPage implements OnInit {
         console.log(this.booking);
       }
     });
-
-    console.log("Loading constructor");
-    this.getDays();
+    console.log("Load constructor");
   }
 
-  public getDays() {
+  ionViewWillEnter() {
+    console.log("Load ionViewWillEnter");
 
     this.appService.presentLoading(1);
     this.apiService.getGroundById(this.booking.groundId).subscribe(response => {
       this.ground = response;
-      this.appService.presentLoading(0);
+      console.log(this.ground);
       this.days_selected = this.ground.day;
+
+      //check if found grounds
+      if (Array.isArray(this.ground) || this.ground != null) {
+        this.appService.presentLoading(0);
+        console.log(this.ground);
+      } else {
+        this.appService.presentLoading(0);
+        this.appService.presentAlert('Sin días disponibles por el momento');
+        console.log("No days results");
+      }
     });
-  }
-
-  ionViewWillEnter() {
-
-    console.log("Loading ionViewWillEnter");
-    this.getDays();
 
     // let missing = this.days.filter(item => a1.indexOf(item) < 0);
     // console.log(missing);
